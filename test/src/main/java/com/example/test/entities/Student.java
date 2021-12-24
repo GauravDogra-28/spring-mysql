@@ -1,14 +1,16 @@
 package com.example.test.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
 @Data
 @Entity
-@Table(name="student")
+@Table(name="student1")
 
 public class Student {
 
@@ -18,14 +20,21 @@ public class Student {
 				+ ", age=" + age + ", college=" + college + ", branch=" + branch + "]";
 	}
 @Id
-@GeneratedValue
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private long ID;
+@Column(name = "contact")
 private long contact;//contact number
+@Column(name = "fname", nullable = false)
 private String fname;//first name
+@Column(name = "lname")
 private String lname;//last name
+@Column(name = "dob")
 private String dob;
+@Column(name = "age")
 private double age;
+@Column(name = "college")
 private String college;
+@Column(name = "branch")
 private String branch;
 public Student() {
 	super();
