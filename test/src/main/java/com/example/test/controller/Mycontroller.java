@@ -28,11 +28,6 @@ public class Mycontroller {
 		super();
 		this.studentService = studentSevice;
 	}
-	//Build create REST API
-	@PostMapping
-	public ResponseEntity<Student> addStudent(@RequestBody Student student){
-		return new ResponseEntity<Student>(studentService.addStudent(student), HttpStatus.OK);
-	}
   //Build get all student REST API
 	@GetMapping
   public List<Student> getStudent(){
@@ -45,7 +40,13 @@ public class Mycontroller {
   public ResponseEntity<Student> getStudent(@PathVariable("id") long studentId){
 	  return new ResponseEntity<Student>(studentService.getStudent(studentId), HttpStatus.OK); 
   }
-  
+
+  //Build create REST API
+	@PostMapping
+	public ResponseEntity<Student> addStudent(@RequestBody Student student){
+		return new ResponseEntity<Student>(studentService.addStudent(student), HttpStatus.OK);
+	}
+	
   //build update student REST API
   @PutMapping("{id}")
   public ResponseEntity<Student> updateStudent(@PathVariable("id") long id , @RequestBody Student student){
@@ -56,7 +57,6 @@ public class Mycontroller {
   @DeleteMapping("{id}")
   public ResponseEntity<String> deleteStudent(@PathVariable("id") long id){
 	studentService.deleteStudent(id);
-		
 		return new ResponseEntity<String>("Employee deleted successfully!.", HttpStatus.OK);
   }
 }
